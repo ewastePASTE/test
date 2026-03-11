@@ -1,22 +1,13 @@
 [
-  {
-    "title": "1v1 Lol",
-    "file": "1v1lol.html",
-    "description": "game like fortnite ig"
-  },
-  {
-    "title": "Platformer Pro",
-    "file": "Untitled Goose Game.html",
-    "description": "goose game ig"
-  },
-  {
-    "title": "Amaze",
-    "file": "amaze.html",
-    "description": "some mobile game ig"
-  }
-  {
-    "title": "Block Blast",
-    "file": "blockblast.html",
-    "description": "puzzle game ig"
-  },
+  {"title": "1v1.lol", "file": "1v1lol.html", "icon": "gun"},
+  {"title": "Untitled Goose", "file": "Untitled Goose Game.html", "icon": "goose"},
+  {"title": "Amaze", "file": "amaze.html", "icon": "maze"},
+  {"title": "Block Blast", "file": "blockblast.html", "icon": "block"},
+  {"title": "Bowmasters", "file": "bowmasters.html", "icon": "bow"},
+  {"title": "Drift Hunters", "file": "drifthunters.html", "icon": "car"},
+  {"title": "GTA 2", "file": "gta2.html", "icon": "star"},
+  {"title": "Mario Kart DS", "file": "mariokartds.html", "icon": "kart"},
+  {"title": "Minecraft", "file": "minecraft.html", "icon": "cube"},
+  {"title": "Slope", "file": "slope.html", "icon": "ball"},
+  {"title": "Webfishing", "file": "webfishing.html", "icon": "fish"}
 ]
