@@ -1,305 +1,222 @@
-/* General Reset and Body Styling */
 body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #12121f; /* Very dark blue-purple background */
+    font-family: 'Inter', sans-serif; /* Clean modern font */
+    background: #020617; /* Very dark slate */
     color: white;
     overflow-x: hidden;
+    display: flex; 
 }
 
-/* Animated Background */
+/* Deep Blue/Cyan Gradient Background */
 #background {
     position: fixed;
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: linear-gradient(
-        45deg,
-        #00aaff, /* Bright blue */
-        #0055ff, /* Medium blue */
-        #00aaff  /* Bright blue */
-    );
-    background-size: 400% 400%;
-    animation: gradient 12s infinite;
-    filter: blur(100px);
-    opacity: 0.7;
+    background: radial-gradient(circle at top center, #0f172a 0%, #020617 100%);
 }
 
-@keyframes gradient {
-    0% { background-position: 0% 50% }
-    50% { background-position: 100% 50% }
-    100% { background-position: 0% 50% }
-}
-
-/* Main Layout Container (sidebar + content) */
-#main-container {
-    display: flex;
-    min-height: 100vh;
-    padding: 15px;
-    box-sizing: border-box;
-}
-
-/* Sidebar Styling */
+/* --- Floating Sidebar --- */
 #sidebar {
-    width: 65px;
-    background: rgba(25, 25, 40, 0.6); /* Semi-transparent dark blue-grey */
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding-top: 20px;
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #0b1120; /* Dark slate */
+    border-right: 1px solid #1e293b;
+    border-top: 1px solid #1e293b;
+    border-bottom: 1px solid #1e293b;
+    padding: 25px 15px;
+    border-radius: 0 15px 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    z-index: 10;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.5);
+}
+
+#sidebar button {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#sidebar button:hover, #sidebar button.active {
+    color: #0ea5e9; /* Cyan highlight */
+    transform: scale(1.1);
+}
+
+/* --- Main Content Area --- */
+#main-content {
+    flex: 1;
+    margin-left: 60px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-    height: fit-content;
-    position: sticky;
-    top: 15px;
+    min-height: 100vh;
 }
 
-.sidebar-icon {
-    width: 45px;
-    height: 45px;
-    margin-bottom: 15px;
-    border-radius: 10px;
+#home-screen {
+    flex: 1;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    width: 100%;
 }
 
-.sidebar-icon:hover {
-    background-color: rgba(0, 170, 255, 0.4); /* Blue hover effect */
-    transform: scale(1.05);
-}
-
-.sidebar-icon.active {
-    background-color: #00aaff; /* Bright blue for active icon */
-}
-
-.sidebar-icon img {
-    width: 28px;
-    height: 28px;
-    filter: invert(100%) brightness(1.5);
-}
-
-/* Content Wrapper (main area to the right of the sidebar) */
-#content-wrapper {
-    flex-grow: 1;
-    padding: 25px 30px;
-    background: rgba(25, 25, 40, 0.3); /* Slightly transparent dark blue-grey */
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-}
-
-/* Header (Title and Search Bar) */
-#header {
-    margin-bottom: 40px;
+#games-screen {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.main-title {
-    font-size: 3.5em;
-    color: #e0e0e0;
-    margin-bottom: 25px;
-    text-align: center;
-    letter-spacing: 2px;
-    text-shadow: 0 0 15px rgba(0, 170, 255, 0.6), 0 0 25px rgba(0, 85, 255, 0.4); /* Blue glow */
+/* --- Titles & Text --- */
+.logo {
+    font-family: 'JetBrains Mono', monospace; /* Tech/OS font style */
+    font-size: 50px;
+    margin: 0 0 10px 0;
+    letter-spacing: -1px;
 }
 
-#search-container {
-    width: 100%;
-    max-width: 600px;
-    margin-bottom: 30px;
+.glow {
+    color: #0ea5e9; /* Bright Cyan */
+    text-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
 }
 
-#game-search {
+.sublink {
+    color: #64748b;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+/* --- Search Bar --- */
+.search-box {
+    margin: 20px 0 40px 0;
     width: 100%;
-    padding: 14px 25px;
-    border: 1px solid rgba(0, 170, 255, 0.5); /* Blue transparent border */
-    border-radius: 30px;
-    background: rgba(255, 255, 255, 0.08);
+    max-width: 400px;
+}
+
+#search {
+    width: 100%;
+    padding: 12px 20px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 25px;
     color: white;
-    font-size: 1.1em;
-    box-sizing: border-box;
+    font-size: 14px;
     outline: none;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    transition: 0.3s;
+    font-family: 'Inter', sans-serif;
 }
 
-#game-search::placeholder {
-    color: rgba(255, 255, 255, 0.6);
+#search:focus {
+    border-color: #0ea5e9;
+    box-shadow: 0 0 10px rgba(14, 165, 233, 0.2);
 }
 
-#game-search:focus {
-    border-color: #00aaff; /* Bright blue border on focus */
-    box-shadow: 0 0 15px rgba(0, 170, 255, 0.7); /* Blue glow on focus */
-}
-
-/* Games Grid Styling */
+/* --- Grid --- */
 #games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fill, 160px);
+    gap: 20px;
     justify-content: center;
-    margin-top: 0;
+    width: 100%;
+    max-width: 1400px;
 }
 
-/* Game Card Styling */
+/* --- Game Card --- */
 .game {
-    width: 130px;
-    height: auto;
-    min-height: 160px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 15px;
+    width: 160px;
+    height: 160px;
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    padding: 10px;
+    justify-content: center;
     cursor: pointer;
-    transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, background 0.2s, border-color 0.2s;
+    padding: 15px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 .game img {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     object-fit: cover;
     border-radius: 10px;
-    margin-bottom: 10px;
-    border: 2px solid rgba(0, 170, 255, 0.5); /* Blue border around image */
+    margin-bottom: 12px;
 }
 
 .game span {
-    font-size: 0.9em;
+    font-size: 12px;
+    font-weight: 600;
     text-align: center;
-    color: rgba(255, 255, 255, 0.9);
-    word-break: break-word;
-    white-space: normal;
-    padding: 0 5px;
+    line-height: 1.3;
+    color: #cbd5e1;
 }
 
 .game:hover {
-    transform: translateY(-5px) scale(1.05);
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 0 25px #00aaff, 0 0 45px #0055ff; /* Blue glow */
+    background: #1e293b;
+    border-color: #0ea5e9;
+    transform: translateY(-5px);
 }
 
-/* Game Player & Exit Button Styling */
+/* --- Game Player --- */
 #player {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.95);
+    background: #020617; /* Behind the frame */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+    z-index: 100;
 }
 
 #game-frame {
     flex: 1;
     border: none;
-    width: 90%;
-    height: 90%;
-    border-radius: 10px;
-    background-color: #2c2c3e; /* Darker background for the iframe itself */
-    /* This background-color might show if the game content itself is transparent or fails to load */
+    width: 100%;
+    height: 100%;
+    background: #ffffff; /* FIXES THE BLACK SCREEN BUG */
 }
 
+/* exit button */
 #exit-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    left: auto;
-    z-index: 1001;
-    background: #e74c3c; /* Red color for exit, stands out */
-    border: none;
-    padding: 12px 22px;
-    border-radius: 12px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 5;
+    background: #0f172a;
+    border: 1px solid #334155;
+    padding: 10px 18px;
+    border-radius: 8px;
     font-weight: bold;
     color: white;
     cursor: pointer;
-    font-size: 1.1em;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 #exit-btn:hover {
-    background: #c0392b;
-    transform: scale(1.05);
+    background: #ef4444; /* Turns red to indicate close/exit */
+    border-color: #ef4444;
 }
 
 .hidden {
-    display: none;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    #main-container {
-        flex-direction: column;
-        padding: 10px;
-    }
-
-    #sidebar {
-        width: 100%;
-        height: auto;
-        flex-direction: row;
-        justify-content: center;
-        margin-right: 0;
-        margin-bottom: 15px;
-        position: relative;
-        top: 0;
-        padding: 10px;
-    }
-
-    .sidebar-icon {
-        margin: 0 10px;
-    }
-
-    #content-wrapper {
-        padding: 20px;
-    }
-
-    .main-title {
-        font-size: 2.5em;
-    }
-
-    #search-container {
-        max-width: 90%;
-    }
-
-    #games-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        gap: 15px;
-    }
-
-    .game {
-        width: 100px;
-        min-height: 130px;
-        padding: 8px;
-    }
-
-    .game img {
-        width: 70px;
-        height: 70px;
-        border-radius: 8px;
-    }
-
-    .game span {
-        font-size: 0.8em;
-    }
-
-    #exit-btn {
-        padding: 8px 15px;
-        font-size: 0.9em;
-        top: 10px;
-        right: 10px;
-    }
+    display: none !important;
 }
