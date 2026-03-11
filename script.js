@@ -1,54 +1,58 @@
-// 1. Define your games here (Avoiding the local fetch error)
 const games = [
-    { title: "Space Explorer", file: "space_game.html", desc: "Retro space shooter." },
-    { title: "Platformer Pro", file: "platformer.html", desc: "Classic 2017 style platformer." },
-    { title: "Clicker Hero", file: "clicker.html", desc: "High CTR progression game." }
+    {title: "1v1.lol", file: "1v1lol.html", icon: "🔫"},
+    {title: "Goose Game", file: "Untitled Goose Game.html", icon: "🪿"},
+    {title: "Amaze", file: "amaze.html", icon: "🧩"},
+    {title: "Block Blast", file: "blockblast.html", icon: "🟥"},
+    {title: "Bowmasters", file: "bowmasters.html", icon: "🏹"},
+    {title: "Drift Hunters", file: "drifthunters.html", icon: "🏎️"},
+    {title: "GTA 2", file: "gta2.html", icon: "⭐️"},
+    {title: "Mario Kart", file: "mariokartds.html", icon: "🏎️"},
+    {title: "Minecraft", file: "minecraft.html", icon: "📦"},
+    {title: "Slope", file: "slope.html", icon: "🏀"},
+    {title: "Webfishing", file: "webfishing.html", icon: "🎣"}
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-    const grid = document.getElementById('game-grid');
-    const modal = document.getElementById('game-modal');
+    const desktop = document.getElementById('desktop');
+    const win = document.getElementById('game-window');
     const frame = document.getElementById('game-frame');
-    const closeBtn = document.querySelector('.close-button');
+    const title = document.getElementById('win-title');
 
-    // 2. CHECK FOR URL PARAMETERS (e.g., index.html?game=space_game.html)
-    const urlParams = new URLSearchParams(window.location.search);
-    const gameToLoad = urlParams.get('game');
-
-    if (gameToLoad) {
-        loadGame(gameToLoad);
+    // 1. Check URL for ?game=file.html
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('game')) {
+        openGame(params.get('game'), "Loading...");
     }
 
-    // 3. BUILD THE MENU
+    // 2. Create Desktop Icons
     games.forEach(game => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-            <h3>${game.title}</h3>
-            <p>${game.desc}</p>
-            <span class="play-link">Play: index.html?game=${game.file}</span>
+        const div = document.createElement('div');
+        div.className = 'icon';
+        div.innerHTML = `
+            <div class="icon-img">${game.icon}</div>
+            <div class="icon-text">${game.title}</div>
         `;
-        
-        card.onclick = () => {
-            // Update URL without refreshing page
-            const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?game=' + game.file;
-            window.history.pushState({path:newUrl}, '', newUrl);
-            loadGame(game.file);
+        div.onclick = () => {
+            // Update URL like ____.io/?game=file.html
+            const newUrl = `${window.location.pathname}?game=${encodeURIComponent(game.file)}`;
+            window.history.pushState({}, '', newUrl);
+            openGame(game.file, game.title);
         };
-        
-        grid.appendChild(card);
+        desktop.appendChild(div);
     });
 
-    function loadGame(filename) {
-        frame.src = `html/${filename}`;
-        modal.style.display = 'block';
+    function openGame(file, name) {
+        title.innerText = name;
+        frame.src = `html/${file}`;
+        win.style.display = 'flex';
     }
-
-    closeBtn.onclick = () => {
-        modal.style.display = 'none';
-        frame.src = ''; 
-        // Reset URL when closing
-        const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-        window.history.pushState({path:cleanUrl}, '', cleanUrl);
-    };
 });
+
+function closeGame() {
+    const win = document.getElementById('game-window');
+    const frame = document.getElementById('game-frame');
+    win.style.display = 'none';
+    frame.src = '';
+    // Reset URL
+    window.history.pushState({}, '', window.location.pathname);
+}
