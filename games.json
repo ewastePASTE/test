@@ -1,12 +1,12 @@
 [
   { "title": "1v1.lol", "file": "1v1lol.html", "icon": "https://img.icons8.com/fluency/48/gun.png" },
-  { "title": "Goose Game", "file": "Untitled Goose Game.html", "icon": "https://img.icons8.com/fluency/48/goose.png" },
+  { "title": "Untitled Goose", "file": "Untitled Goose Game.html", "icon": "https://img.icons8.com/fluency/48/goose.png" },
   { "title": "Amaze", "file": "amaze.html", "icon": "https://img.icons8.com/fluency/48/puzzle.png" },
   { "title": "Block Blast", "file": "blockblast.html", "icon": "https://img.icons8.com/fluency/48/rubiks-cube.png" },
   { "title": "Bowmasters", "file": "bowmasters.html", "icon": "https://img.icons8.com/fluency/48/archery.png" },
   { "title": "Drift Hunters", "file": "drifthunters.html", "icon": "https://img.icons8.com/fluency/48/race-car.png" },
   { "title": "GTA 2", "file": "gta2.html", "icon": "https://img.icons8.com/fluency/48/star.png" },
-  { "title": "Mario Kart", "file": "mariokartds.html", "icon": "https://img.icons8.com/fluency/48/mario.png" },
+  { "title": "Mario Kart DS", "file": "mariokartds.html", "icon": "https://img.icons8.com/fluency/48/mario.png" },
   { "title": "Minecraft", "file": "minecraft.html", "icon": "https://img.icons8.com/color/48/minecraft-main-menu.png" },
   { "title": "Slope", "file": "slope.html", "icon": "https://img.icons8.com/fluency/48/sphere.png" },
   { "title": "Webfishing", "file": "webfishing.html", "icon": "https://img.icons8.com/fluency/48/fish.png" }
