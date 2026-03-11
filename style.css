@@ -1,28 +1,28 @@
-/* Animation for cards appearing */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WinOS Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-.card {
-    background: #1e293b;
-    padding: 20px;
-    border-radius: 12px;
-    cursor: pointer;
-    border: 1px solid #334155;
-    animation: fadeInUp 0.4s ease forwards;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
+    <div id="desktop"></div>
 
-.card:hover {
-    transform: scale(1.03);
-    border-color: #38bdf8;
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
-}
+    <div id="game-window" class="window">
+        <div class="win-header">
+            <span id="win-title">Game</span>
+            <span class="close-btn" onclick="closeGame()">✕</span>
+        </div>
+        <iframe id="game-frame" src=""></iframe>
+    </div>
 
-.play-link {
-    font-size: 0.7rem;
-    color: #64748b;
-    display: block;
-    margin-top: 10px;
-}
+    <div id="taskbar">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Windows_11_logo.svg" class="task-icon">
+        <img src="https://img.icons8.com/color/48/search--v1.png" class="task-icon">
+        <img src="https://img.icons8.com/color/48/folder-invoices--v1.png" class="task-icon">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
